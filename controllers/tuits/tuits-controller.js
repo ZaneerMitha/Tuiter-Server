@@ -1,9 +1,13 @@
 import * as tuitsDao from '../../tuits/tuits-dao.js'
 
 const findTuits = async (req, res) => {
-    const tuits = await tuitsDao.findTuits()
-    res.json(tuits);
-}
+    try {
+        const tuits = await tuitsDao.findTuits();
+        res.json(tuits);
+    } catch (err) {
+        res.sendStatus(503);
+    }
+};
 
 // import posts from "./tuits.js";
 // let tuits = posts;
